@@ -72,7 +72,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
           />
         </div>
         <div>
-          <h3 className="text-xl font-semibold mt-4">Ingredients:</h3>
+          <h3 className="text-xl font-semibold mt-4 mb-4">Ingredients:</h3>
           <ul className="grid grid-cols-2 gap-4">
             {Array.from({ length: 20 }, (_, i) => {
               const ingredient = recipe[`strIngredient${i + 1}`];
