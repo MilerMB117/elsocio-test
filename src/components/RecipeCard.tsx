@@ -35,7 +35,7 @@ const RecipeCard: FC<RecipeCardProps> = ({
         if (meal && meal.strMealRating) {
           setRating(parseFloat(meal.strMealRating));
         } else {
-          setRating(0); // If rating is not available, set to 0
+          setRating(0); 
         }
       } catch (error) {
         console.error("Error fetching rating:", error);
@@ -48,8 +48,6 @@ const RecipeCard: FC<RecipeCardProps> = ({
   if (isLoading || rating === null) {
     return <RecipeCardSkeleton />;
   }
-
-  // Calcular las estrellas redondeando al entero más cercano
   const stars = Math.round(rating);
 
 
@@ -68,7 +66,6 @@ const RecipeCard: FC<RecipeCardProps> = ({
         <div className="p-4">
           <h2 className="text-xl font-bold h2">{title}</h2>
           <div className="flex items-center text-yellow-500">
-            {/* Mostrar las estrellas según el rating */}
             {Array.from({ length: 5 }, (_, index) => (
               <svg
                 key={index}
@@ -86,7 +83,6 @@ const RecipeCard: FC<RecipeCardProps> = ({
                 />
               </svg>
             ))}
-            {/* Mostrar el número de reviews */}
             <p className="ml-1">{reviews} reviews</p>
           </div>
           <div className="flex items-center mt-2">
