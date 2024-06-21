@@ -32,13 +32,16 @@ const RecipeCard: FC<RecipeCardProps> = ({
         );
         const data = await res.json();
         const meal = data.meals[0];
+        const mockRating = Math.floor(Math.random() * 5) + 1; // Calificación simulada
+
         if (meal && meal.strMealRating) {
           setRating(parseFloat(meal.strMealRating));
         } else {
-          setRating(0); 
+          setRating(mockRating); 
         }
       } catch (error) {
         console.error("Error fetching rating:", error);
+        setRating(0);
       }
     };
 
@@ -48,6 +51,7 @@ const RecipeCard: FC<RecipeCardProps> = ({
   if (isLoading || rating === null) {
     return <RecipeCardSkeleton />;
   }
+
   const stars = Math.round(rating);
 
   return (
@@ -64,7 +68,7 @@ const RecipeCard: FC<RecipeCardProps> = ({
         </div>
         <div className="p-4">
           <h2 className="text-xl font-bold h2">{title}</h2>
-          <div className="flex items-center text-yellow-500">
+          <div className="flex items-center text-yellow-500 mb-2">
             {Array.from({ length: 5 }, (_, index) => (
               <svg
                 key={index}
@@ -82,7 +86,7 @@ const RecipeCard: FC<RecipeCardProps> = ({
                 />
               </svg>
             ))}
-            <p className="ml-1">{reviews} reviews</p>
+            <p className="ml-1">{reviews || 'No'} reviews</p>
           </div>
           <div className="flex items-center mt-2">
             <p className="text-gray-600 bg-gray-200 rounded-full inline-block px-3 py-1 text-sm font-semibold mr-2">
