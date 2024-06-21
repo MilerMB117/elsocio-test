@@ -1,7 +1,8 @@
+"use client"
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Image from 'next/image'; // Importa la etiqueta Image de Next.js
+import Image from 'next/image';
 
 const RecipeDetail = () => {
   const router = useRouter();
