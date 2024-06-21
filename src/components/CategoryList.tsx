@@ -16,19 +16,19 @@ const CategoryList: FC<CategoryListProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    // Función para calcular el ancho mínimo basado en el texto más largo
+    
     const calculateMinWidth = () => {
       if (buttonRef.current) {
         const maxTextLength = categories.reduce(
           (max, category) => (category.length > max ? category.length : max),
           0
         );
-        const minWidth = maxTextLength * 8; // Multiplicador para ajustar el ancho mínimo según la longitud del texto
+        const minWidth = maxTextLength * 8; 
         buttonRef.current.style.minWidth = `${minWidth}px`;
       }
     };
 
-    calculateMinWidth(); // Llama a la función al cargar el componente o cuando cambian las categorías
+    calculateMinWidth(); 
   }, [categories]);
 
   return (
@@ -46,14 +46,14 @@ const CategoryList: FC<CategoryListProps> = ({
       {categories.map((category, index) => (
         <button
           key={category}
-          ref={index === 0 ? buttonRef : null} // Asigna el ref solo al primer botón para calcular el ancho
+          ref={index === 0 ? buttonRef : null} 
           onClick={() => onSelectCategory(category)}
           className={`flex items-center px-4 py-2 rounded-xl text-sm ${
             selectedCategory === category
               ? "bg-orange-500 text-white"
               : "bg-white text-black"
           }`}
-          style={{ minWidth: "10rem" }} // Ancho mínimo inicial para evitar que el texto se comprima demasiado
+          style={{ minWidth: "10rem" }} 
         >
           <div className="flex items-center">
             <Image
