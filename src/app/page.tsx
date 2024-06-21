@@ -107,10 +107,9 @@ const HomePage = () => {
               id={recipe.idMeal}
               image={recipe.strMealThumb}
               title={recipe.strMeal}
-              reviews={Math.floor(Math.random() * 100)} // Mocked reviews
+              reviews={Math.floor(Math.random() * 100)} 
               country={recipe.strArea || 'Unknown'}
-              continent="Unknown" // This would require additional data
-              duration="20-30" // Mocked duration
+              duration="20-30" 
             />
           ))}
         </div>
