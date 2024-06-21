@@ -23,6 +23,10 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
 
   if (!recipe) return <RecipeSkeleton />;
 
+  const mockCookTime = recipe.strArea === "American" ? 45 : 30; // Tiempo de cocción simulado
+  const mockReviews = Math.floor(Math.random() * 100); // Reseñas simuladas
+  const mockRating = Math.floor(Math.random() * 5) + 1; // Calificación simulada
+
   const ingredientImages = Array.from({ length: 20 }, (_, i) => {
     const ingredient = recipe[`strIngredient${i + 1}`];
     return ingredient ? (
@@ -43,13 +47,13 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
       <Banner />
       <div className="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold h2">{recipe.strMeal}</h2>
-        <p className="text-gray-600">Cooking time: {recipe.strCookTime || 'Unknown'} mins</p>
+        <p className="text-gray-600">Cooking time: {mockCookTime} mins</p>
         <div className="flex items-center text-yellow-500 mb-4">
           {Array.from({ length: 5 }, (_, index) => (
             <svg
               key={index}
               xmlns="http://www.w3.org/2000/svg"
-              className={`h-5 w-5 fill-current ${index < Math.round(recipe.rating) ? 'text-yellow-500' : 'text-gray-300'}`}
+              className={`h-5 w-5 fill-current ${index < mockRating ? 'text-yellow-500' : 'text-gray-300'}`}
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -60,7 +64,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
               />
             </svg>
           ))}
-          <p className="ml-1">{recipe.reviews || 'No'} reviews</p>
+          <p className="ml-1">{mockReviews} reviews</p>
         </div>
         <div className="flex justify-center mb-4">
           <Image
@@ -68,11 +72,11 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
             alt={recipe.strMeal}
             width={600}
             height={400}
-            className="rounded-xl shadow-xl"
+            className="rounded-lg shadow-lg"
           />
         </div>
         <div>
-          <h3 className="text-xl font-semibold mt-4 mb-4">Ingredients:</h3>
+          <h3 className="text-xl font-semibold mt-4">Ingredients:</h3>
           <ul className="grid grid-cols-2 gap-4">
             {Array.from({ length: 20 }, (_, i) => {
               const ingredient = recipe[`strIngredient${i + 1}`];
