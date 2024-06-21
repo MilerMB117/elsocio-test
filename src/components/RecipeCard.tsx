@@ -50,7 +50,6 @@ const RecipeCard: FC<RecipeCardProps> = ({
   }
   const stars = Math.round(rating);
 
-
   return (
     <Link href={`/recipe/${id}`} legacyBehavior>
       <a className="bg-white shadow-lg overflow-hidden card block w-full">

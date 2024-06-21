@@ -44,6 +44,10 @@
   color: var(--orange-color);
   font-weight: boldvar;
 }
+h3{
+  color: var(--orange-color);
+  font-weight: boldvar;
+}
 .title-card{
   color:var(--red-color)
 }
@@ -82,4 +86,28 @@
     ),
     linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
   background-size: 100% 30px;
+}
+.rounded-full {
+  border-radius: 50%;
+}
+.skeletonContainer {
+  background-color: #f0f0f3;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
