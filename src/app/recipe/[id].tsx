@@ -1,18 +1,22 @@
 import Navbar from '../../components/Navbar';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'; // Importa useRouter para acceder a la información de la ruta
 import { useEffect, useState } from 'react';
 
 const RecipeDetail = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const router = useRouter(); // Usa useRouter para obtener la información de la ruta
+  const { id } = router.query; // Accede a la propiedad query de useRouter
   const [recipe, setRecipe] = useState<any>(null);
 
   useEffect(() => {
     if (id) {
       const fetchRecipeDetail = async () => {
-        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-        const data = await res.json();
-        setRecipe(data.meals[0]);
+        try {
+          const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+          const data = await res.json();
+          setRecipe(data.meals[0]);
+        } catch (error) {
+          console.error('Error fetching recipe:', error);
+        }
       };
 
       fetchRecipeDetail();
