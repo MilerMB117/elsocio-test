@@ -29,7 +29,7 @@ const RecipeCard: FC<RecipeCardProps> = ({
   }
 
   return (
-    <Link href={`/recipes/${id}`} legacyBehavior>
+    <Link href={`/recipe/${id}`} legacyBehavior>
       <a className="bg-white shadow-lg overflow-hidden card">
         <Image
           src={image}

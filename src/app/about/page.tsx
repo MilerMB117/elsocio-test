@@ -15,7 +15,7 @@ const Author: React.FC = () => {
                 <div className="flex flex-col md:flex-row items-center md:items-start">
                     <div className="md:w-1/3 mb-4 md:mb-0">
                         <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden">
-                            <Image src={avatar} alt={name} layout="fill" objectFit="cover" className="rounded-full" />
+                            <Image src={avatar} alt={name} layout="fixed" width={256} height={256} objectFit="cover" className="rounded-full" />
                         </div>
                     </div>
                     <div className="md:w-2/3 md:ml-8">
